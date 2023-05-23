@@ -1,0 +1,190 @@
+﻿@using computer_info.Models.ViewModel;
+@model ComputerInfoViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <style>
+
+        h1,form{
+            margin: 50px;
+        }
+    </style>
+    </head>
+
+<body>
+    <h1>Exam Info</h1>
+    <form action="/computerinfo/edit" method="POST">
+
+
+        <input type="text" name="" id="computerType" value="@Model.Type" hidden>
+        <input type="text" name="" id="brandType" value="@Model.Brand" hidden>
+        <input type="text" name="" id="cpuType" value="@Model.CPU" hidden>
+        <input type="text" name="" id="ramType" value="@Model.RAM" hidden>
+
+        <label for="" class="form-label">Level Name</label><br>
+        <div class="input-group mb-3">
+            <input type="text" name="levelName" class="form-control" value="@Model.LevelName" aria-label="Recipient's username"
+                aria-describedby="basic-addon2">
+        </div>
+
+
+        <label for="" class="form-label">Computer Type</label><br>
+                                                        <div class="input-group mb-3">
+                                                            <select name="Type" id="computerTypeDropDown"  class="form-select" aria-label="Default select example">
+                                                            </select>
+                                                        </div>
+
+
+        <label for="" class="form-label">Brand</label><br>
+        <div class="input-group mb-3">
+            <select name="Brand" id="brandTypeDropDown" class="form-select" aria-label="Default select example">
+
+              </select>
+        </div>
+
+        <label for="" class="form-label">CPU</label><br>
+        <div class="input-group mb-3">
+            <select id="cpuTypeDropDown" name="CPU" class="form-select" aria-label="Default select example">
+
+              </select>
+        </div>
+
+        <label for="" class="form-label">RAM</label><br>
+        <div class="input-group mb-3">
+            <select name="RAM" id="ramTypeDropDown" class="form-select" aria-label="Default select example">
+  
+              </select>
+        </div>
+
+
+        <label for="" class="form-label">Storage Size</label><br>
+        <div class="input-group mb-3">
+            <input name="storageSize" type="number" class="form-control" placeholder="Pass Marks" aria-label="Recipient's username"
+                aria-describedby="basic-addon2">
+        </div>
+
+
+        <label for="" class="form-label">Is SSD ?</label><br>
+        <div class="input-group mb-3">
+            <input name="isSSD" type="checkbox" class="form-check-input" aria-label="Recipient's username"
+                aria-describedby="basic-addon2">
+        </div>
+
+        <label for="" class="form-label">Is Active ?</label><br>
+        <div class="input-group mb-3">
+            <input name="isActive" type="checkbox" class="form-check-input"aria-label="Recipient's username"
+                aria-describedby="basic-addon2">
+        </div>
+
+        
+   
+        <div class="mb-3">
+            <div class="row">
+                <div class="col">
+                    <input type="submit" class="btn btn-success" value="Submit">
+                </div>
+                <div class="col">
+                    <input type="reset" class="btn btn-secondary" value="Cancle">
+                </div>
+            </div>
+        </div>
+
+    </form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+
+<script>
+    let computerType = ["Laptop", "Desktop"];
+    let brandType = ["Lenovo", "Dell", "Acer"];
+    let cpuType = ["Core i3 3rd Gen", "Core i3 5th Gen", "Core i3 7th Gen"];
+    let ramType = ["DDR 4G", "DDR 8G", "DDR 16G"];
+
+    let computerTypeDropDown = document.getElementById("computerTypeDropDown");
+    let brandTypeDropDown = document.getElementById("brandTypeDropDown");
+    let cpuTypeDropDown = document.getElementById("cpuTypeDropDown");
+    let ramTypeDropDown = document.getElementById("ramTypeDropDown");
+
+    let computerTypeDropDownValue = document.getElementById("computerType");
+    let brandTypeDropDownValue = document.getElementById("brandType");
+    let cpuTypeDropDownValue = document.getElementById("cpuType");
+    let ramTypeDropDownValue = document.getElementById("ramType");
+
+    let computerTypeDropDownValueText = computerTypeDropDownValue.value;
+    let brandTypeDropDownValueText = brandTypeDropDownValue.value;
+    let cpuTypeDropDownValueText = cpuTypeDropDownValue.value;
+    let ramTypeDropDownValueText = ramTypeDropDownValue.value;
+
+
+
+    for (let i = 0; i < computerType.length; i++) {
+        let option = document.createElement("option");
+        if (computerTypeDropDownValueText === computerType[i]) {
+            option.selected = true;
+        }
+        option.value = computerType[i];
+        option.text = computerType[i];
+        computerTypeDropDown.appendChild(option);
+    }
+
+
+    for (let i = 0; i < brandType.length; i++) {
+        let option = document.createElement("option");
+        if (brandTypeDropDownValueText === brandType[i]) {
+            option.selected = true;
+        }
+        option.value = brandType[i];
+        option.text = brandType[i];
+        brandTypeDropDown.appendChild(option);
+    }
+
+
+    for (let i = 0; i < cpuType.length; i++) {
+        let option = document.createElement("option");
+        if (cpuTypeDropDownValueText === cpuType[i]) {
+            option.selected = true;
+        }
+        option.value = cpuType[i];
+        option.text = cpuType[i];
+        cpuTypeDropDown.appendChild(option);
+    }
+
+
+    for (let i = 0; i < ramType.length; i++) {
+        let option = document.createElement("option");
+        if (ramTypeDropDownValueText === ramType[i]) {
+            option.selected = true;
+        }
+        option.value = ramType[i];
+        option.text = ramType[i];
+        ramTypeDropDown.appendChild(option);
+    }
+
+
+
+        let isSSD = document.getElementById("isSSD");
+        let isActive = document.getElementById("isActive");
+
+
+    isSSD.addEventListener("click", (e) => {
+            e.target.value = "true";
+    });
+
+    isActive.addEventListener("click", (e) => {
+            e.target.value = "true";
+    });
+
+
+
+</script>
+
+</html>
